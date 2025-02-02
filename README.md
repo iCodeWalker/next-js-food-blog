@@ -1,40 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## FileSystem-Based Routing:
 
-## Getting Started
+    Next.js uses files and folders to define routes.
+    Files and folders inside the "app" folder will be considered for routing.
 
-First, run the development server:
+    /app
+        /about.js = example.com/about
+        /blog
+            /post-1 = example.com/blog/post-1
+            /post-2 = example.com/blog/post-2
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    Next.js works with React Server Components
+        The component is rendered on the server and never on the client side.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    In next.js The components are treated as a server component and is executed on the server and the returned JSX code is than send to the browser to be shown.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+    ## File name matters in Next.js
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+        Next.js relies on reserved, special filenames.
+        This only matters inside the "app" folder
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+        page.js = Defines page content.
+        layout.js = Defines wrapper around the page.
+        not-found.js = Defines "Not Found" fallback page.
+        error.js = Defines "Error" fallback page.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Navigating Between Pages:
 
-## Learn More
+    We can use anchor tags to navigate between pages,but it will always reload a new page so the Single page application functionality on Next app will be of no use.
 
-To learn more about Next.js, take a look at the following resources:
+    When we visit the page for the first time by manually entering the url the componets is rendered on the server and the rendered HTML content is sent to client.
+    But if we are on a page and navigating around by clicking on the links, the JSX is updated on the client side using the JS code.
+    The anchor tag does not support SPA.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    To support SPA we need to use the "Link" component provided by the next/link
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Page & layout
 
-## Deploy on Vercel
+    Page.js file defines the content of the page.
+    Layout.js file defines the Shell or container around one or more pages, It is a layout into which the page will be rendered.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    Root Layout.js setups the general skeleton of the website.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    No <head> element/section inside the <html> tag is needed for providing meta data in Next js,it is done automatically with the next js and instead we can use a reserved "metadata" keyword for this
+
+        export const metadata = {
+            title: "NextJS Course App",
+            description: "Your first NextJS app!",
+        };
