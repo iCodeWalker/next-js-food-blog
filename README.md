@@ -60,3 +60,10 @@
 
     ######## New way of importing in Next.js ########
     import Header from "@/components/header"; ### @ here refers to the root of the project
+
+## Configuring Dynamic Routes
+
+    [id] is a special syntax supported by next.js for dynamic routes.
+
+    we can access the dynamic route value using "params" props
+    params is an object in which key is the  value inside [] and the value is what we recieve in the URL after /blog
