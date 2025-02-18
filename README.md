@@ -30,7 +30,7 @@
 
     When we visit the page for the first time by manually entering the url the componets is rendered on the server and the rendered HTML content is sent to client.
     But if we are on a page and navigating around by clicking on the links, the JSX is updated on the client side using the JS code.
-    The anchor tag does not support SPA.
+    The anchor tag does not support SPA.(Single Page Application)
 
     To support SPA we need to use the "Link" component provided by the next/link
 
@@ -47,3 +47,16 @@
             title: "NextJS Course App",
             description: "Your first NextJS app!",
         };
+
+    ############# icon.png ##########
+    The icon that we add inside the "app" folder with name of "icon.png" will be used automatically for the fav icon of the website.
+    "icon" is also a reserved keyword in Next.js
+
+    ############# Cutom React Components ###########
+    Header.js is custom React component that can be used in Next.js
+
+    Ideally we should keep custom components, utils and other helper functions outside the "app" folder.
+    Only routing related Components should be present inside the "app" folder.
+
+    ######## New way of importing in Next.js ########
+    import Header from "@/components/header"; ### @ here refers to the root of the project
